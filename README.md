@@ -1,6 +1,6 @@
 # Fetch Rewards Receipt Processor
 
-This is a Java Spring Boot application that follows a three-layer architecture consisting of a Controller layer, a Service layer, and a Repository layer. Each layer has its respective directory, and the components within each layer are organized accordingly. The Controller communicates with the Service layer, which in turn interacts with the Repository layer. The Service layer implements the business logic. Service and Repository instances are injected through Spring dependency injection, and configurations are defined in the `AppConfig.java` file.
+This is a Java Spring Boot application that follows a three-layer architecture consisting of a Controller layer, a Service layer, and a Repository layer. Each layer has its respective directory, and the components within each layer are organized accordingly. The Controller communicates with the Service layer, which in turn interacts with the Repository layer. The Service layer implements the business logic. Service, Repository, and Database instances are injected through Spring dependency injection, and configurations are defined in the `AppConfig.java` file.
 
 ## Database
 The app relies on an in-memory database, a simple HashMap. Therefore, initially, there will not be any data, and the data will not persist once the application is shut down.
@@ -20,9 +20,10 @@ Specific details regarding the endpoints can be found in the `api.yml` file in t
      - `total` cannot be null
      - `items` cannot be null and must have at least one item
    - If the validation fails, appropriate error responses are returned.
+   - Finally, it returns a `ReceiptId` object that contains the id of this receipt.
 
 2. **Retrieve Points**: `GET /receipts/{id}/points`
-   - This endpoint receives the ID of a receipt and returns the saved points associated with that ID.
+   - This endpoint receives the ID of a receipt and returns the saved points associated with that ID in a `ReceiptPoints` object.
    - If there are no points associated with the provided ID, a `PointsNotFoundException` is thrown. This exception is caught by an exception handler, which returns an error response.
 
 ## Models
@@ -60,7 +61,7 @@ The application relies on the following dependencies:
 
 ## Installation
 ### Docker
-1. Make sure you have Docker installed on your machine.
+1. Make sure you have Docker and Git installed on your machine.
 2. Clone the repository: git clone <https://github.com/vinodghai/FetchRewardsReceiptProcessor.git>
 3. Navigate to the project directory: cd <FetchRewardsReceiptProcessor>
 4. Build a docker image locally using `docker build -t fetch-rewards-receipt-processor .`
