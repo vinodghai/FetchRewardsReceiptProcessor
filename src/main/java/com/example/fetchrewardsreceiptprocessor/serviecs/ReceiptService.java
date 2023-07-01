@@ -20,7 +20,7 @@ public class ReceiptService implements IReceiptService {
         int points = 0;
 
         // Rule 1: One point for every alphanumeric character in the retailer name.
-        points += receipt.retailer().replaceAll("\\W", "").length();
+        points += receipt.retailer().chars().filter(this::isAlphanumeric).count();
 
         // Rule 2: 50 points if the total is a round dollar amount with no cents
         if (receipt.total() % 1 == 0) {
@@ -53,6 +53,10 @@ public class ReceiptService implements IReceiptService {
         }
 
         return points;
+    }
+
+    private boolean isAlphanumeric(int c) {
+        return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
     @Override
