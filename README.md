@@ -1,6 +1,6 @@
 # Fetch Rewards Receipt Processor
 
-This is a Java Spring Boot application that follows a three-layer architecture consisting of a Controller layer, a Service layer, and a Repository layer. Each layer has its respective directory, and the components within each layer are organized accordingly. The Controller communicates with the Service layer, which in turn interacts with the Repository layer. The Service layer implements the business logic. Service, Repository, and Database instances are injected through Spring dependency injection, and configurations are defined in the `AppConfig.java` file.
+This is a Java Spring Boot application that follows a three-layer architecture consisting of a Controller layer, a Service layer, and a Repository layer. Each layer has its respective directory, and the components within each layer are organized accordingly. The Controller communicates with the Service layer, which in turn interacts with the Repository layer. The Service layer implements the business logic. Service, Repository, and Database instances are injected through Spring dependency injection.
 
 ## Database
 The app relies on an in-memory database, a simple HashMap. Therefore, initially, there will not be any data, and the data will not persist once the application is shut down.

@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * A class with defines global exception handlers. If an exception is raised while execution, it is
+ * caught by one of the matching @ExceptionHandler methods, and we return the appropriate ErrorResponse.
+ * If there's no matching handler, then exception is thrown and 500 response is sent back by the framework.
+ */
 @ControllerAdvice
 public class AppExceptionHandler {
 

@@ -2,13 +2,18 @@ package com.example.fetchrewardsreceiptprocessor.databases;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class ReceiptDb {
 
-    private final Map<String, Integer> db = new HashMap<>();
+    /*
+        Using ConcurrentHashMap to support multiple requests simultaneously without inconsistencies
+     */
+    private final Map<String, Integer> db = new ConcurrentHashMap<>();
 
     public void saveReceiptPoints(@NonNull String receiptId, int points) {
         db.put(receiptId, points);

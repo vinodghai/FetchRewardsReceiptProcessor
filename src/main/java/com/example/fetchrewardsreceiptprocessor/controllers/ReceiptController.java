@@ -6,15 +6,19 @@ import com.example.fetchrewardsreceiptprocessor.models.ReceiptId;
 import com.example.fetchrewardsreceiptprocessor.models.ReceiptPoints;
 import com.example.fetchrewardsreceiptprocessor.serviecs.IReceiptService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * The controller class responsible for handling requests which have prefixes starting with /receipts
+ */
 @RestController
 @RequestMapping("/receipts")
 public class ReceiptController {
 
     private final IReceiptService iReceiptService;
 
+    @Autowired
     public ReceiptController(IReceiptService iReceiptService) {
         this.iReceiptService = iReceiptService;
     }
