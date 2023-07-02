@@ -6,12 +6,12 @@ import com.example.fetchrewardsreceiptprocessor.models.Item;
 import com.example.fetchrewardsreceiptprocessor.models.Receipt;
 import com.example.fetchrewardsreceiptprocessor.repositories.IReceiptRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,11 +20,13 @@ import java.util.stream.Stream;
 
 import static org.mockito.Mockito.*;
 
+@SpringJUnitConfig
 public class ReceiptServiceTest {
 
     @Mock
     private IReceiptRepository receiptRepository;
 
+    @InjectMocks
     private ReceiptService receiptService;
 
     private static Stream<ExpectedReceiptPoints> receiptsProvider() {
@@ -52,11 +54,6 @@ public class ReceiptServiceTest {
         return Stream.of(one, two);
     }
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        receiptService = new ReceiptService(receiptRepository);
-    }
 
     @ParameterizedTest
     @MethodSource("receiptsProvider")

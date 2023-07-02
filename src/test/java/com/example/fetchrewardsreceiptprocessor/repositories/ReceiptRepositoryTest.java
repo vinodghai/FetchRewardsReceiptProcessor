@@ -2,28 +2,24 @@ package com.example.fetchrewardsreceiptprocessor.repositories;
 
 import com.example.fetchrewardsreceiptprocessor.databases.ReceiptDb;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
+@SpringJUnitConfig
 public class ReceiptRepositoryTest {
 
     @Mock
     private ReceiptDb receiptDb;
 
+    @InjectMocks
     private ReceiptRepository receiptRepository;
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        receiptRepository = new ReceiptRepository(receiptDb);
-    }
 
     @Test
     public void testSaveReceiptPoints() {
