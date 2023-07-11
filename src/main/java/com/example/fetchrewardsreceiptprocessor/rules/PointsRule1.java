@@ -1,16 +1,17 @@
 package com.example.fetchrewardsreceiptprocessor.rules;
 
 import com.example.fetchrewardsreceiptprocessor.models.Receipt;
+import jakarta.annotation.Nonnull;
 
 public class PointsRule1 implements PointsRule {
 
     @Override
-    public boolean evaluate(Receipt receipt) {
+    public boolean evaluate(@Nonnull Receipt receipt) {
         return !receipt.retailer().isBlank();
     }
 
     @Override
-    public int getPoints(Receipt receipt) {
+    public int getPoints(@Nonnull Receipt receipt) {
         return (int) receipt.retailer().chars().filter(this::isAlphanumeric).count();
     }
 
