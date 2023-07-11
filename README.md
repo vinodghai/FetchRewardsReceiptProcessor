@@ -52,6 +52,9 @@ public record Item(
 ) {
 }
 ```
+### Tests
+Unit tests are in `src/test`, written for the controller, service, and repository layers components. 
+
 ### Dependencies
 The application relies on the following dependencies:
 1. Java JDK
@@ -63,7 +66,7 @@ The application relies on the following dependencies:
 ### Docker
 1. Make sure you have Docker and Git installed on your machine.
 2. Clone the repository: git clone <https://github.com/vinodghai/FetchRewardsReceiptProcessor.git>
-3. Navigate to the project directory: cd <FetchRewardsReceiptProcessor>
+3. Navigate to the project directory: `cd FetchRewardsReceiptProcessor`
 4. Build a docker image locally using `docker build -t fetch-rewards-receipt-processor .`
 5. Run the created image using `docker run -p 8080:8080 fetch-rewards-receipt-processor .`
 
